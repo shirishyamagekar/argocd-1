@@ -1,0 +1,23 @@
+#configure the deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  namespace: shirish-frontend
+  labels:
+    app: my-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: frontend-container
+          image: shirishyamagekar/my-nginx-app:v1
+          ports:
+            - containerPort: 80

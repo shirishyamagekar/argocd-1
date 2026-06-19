@@ -1,0 +1,14 @@
+#confige k8s svc with loadbalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: shirish-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
